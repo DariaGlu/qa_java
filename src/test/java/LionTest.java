@@ -14,16 +14,16 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
-    private static final String male = "Самец";
-    private static final String female = "Самка";
-    private static final String other = "Кто-то";
+    private static final String MALE = "Самец";
+    private static final String FEMALE = "Самка";
+    private static final String OTHER = "Кто-то";
 
     @Mock
     Feline feline;
 
     @Test
     public void lionGetsKittens() throws Exception {
-        Lion lion = new Lion(female, feline);
+        Lion lion = new Lion(FEMALE, feline);
         Mockito.when(feline.getKittens()).thenReturn(1);
         int expectedKittens = 1;
         assertEquals(expectedKittens, lion.getKittens());
@@ -31,7 +31,7 @@ public class LionTest {
 
     @Test
     public void lionGetsFood () throws Exception {
-        Lion lion = new Lion(male, feline);
+        Lion lion = new Lion(MALE, feline);
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expectedFoodList = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expectedFoodList, lion.getFood());
@@ -44,6 +44,6 @@ public class LionTest {
     public void exceptionWhenLionCreation() throws Exception {
         exceptionRule.expect(Exception.class);
         exceptionRule.expectMessage("Используйте допустимые значения пола животного - самец или самка");
-        Lion lion = new Lion(other, feline);
+        Lion lion = new Lion(OTHER, feline);
     }
 }

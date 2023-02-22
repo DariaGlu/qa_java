@@ -18,7 +18,7 @@ public class LionHasManeTest {
         this.sex = sex;
         this.hasMane = hasMane;
     }
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Test data: sex: {0}, hasMane: {1}")
     public static Object[][] getData() {
         return new Object[][]{
                 {"Самец", true},

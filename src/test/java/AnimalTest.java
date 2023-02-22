@@ -7,8 +7,8 @@ import org.junit.rules.ExpectedException;
 import static org.junit.Assert.assertEquals;
 
 public class AnimalTest {
-    private static final String unexpectedAnimalKind = "Всеядное";
-    private static final String families = "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи";
+    private static final String UNEXPECTED_ANIMAL_KIND = "Всеядное";
+    private static final String FAMILIES = "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи";
     private Animal animal;
     @Before
     public void createAnimal() {
@@ -22,11 +22,11 @@ public class AnimalTest {
     public void exceptionWhenAnimalGetsFood() throws Exception {
         exceptionRule.expect(Exception.class);
         exceptionRule.expectMessage("Неизвестный вид животного, используйте значение Травоядное или Хищник");
-        animal.getFood(unexpectedAnimalKind);
+        animal.getFood(UNEXPECTED_ANIMAL_KIND);
     }
 
     @Test
     public void animalGetsFamily() {
-      assertEquals(families, animal.getFamily());
+      assertEquals(FAMILIES, animal.getFamily());
     }
 }
